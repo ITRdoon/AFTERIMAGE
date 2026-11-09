@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Through My Eyes · الذكاء الاصطناعي كما أراه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f3f8;--surf:#fff;--ink:#0d1326;--mute:#555e7a;--line:#d5dae8;--acc:#1a56db;--hot:#c2410c;--ok:#0f8a4f;--on:#fff;
+font-family:"Readex Pro",Tahoma,Arial,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--surf:#131a31;--ink:#eef2ff;--mute:#95a1c6;--line:#252f55;--acc:#8ab4ff;--hot:#fdba74;--ok:#5eead4;--on:#0b1020}}
+:root[data-theme="dark"]{--bg:#0b1020;--surf:#131a31;--ink:#eef2ff;--mute:#95a1c6;--line:#252f55;--acc:#8ab4ff;--hot:#fdba74;--ok:#5eead4;--on:#0b1020}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.8}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+.strip{height:4px;background:linear-gradient(90deg,#4285f4 25%,#ea4335 25% 50%,#fbbc04 50% 75%,#34a853 75%)}
+.top{display:flex;justify-content:space-between;align-items:center;padding-top:18px;font-size:14px;color:var(--mute);font-weight:500}
+.hero{padding-bottom:44px;border-bottom:1px solid var(--line)}
+.kick{color:var(--acc);font-weight:500;margin:34px 0 10px}
+h1{font-size:clamp(38px,9.5vw,70px);line-height:1.2;margin:0 0 16px;font-weight:700;letter-spacing:-.02em}
+:root[lang=ar] h1{letter-spacing:0;line-height:1.4}
+.sub{max-width:48ch;color:var(--mute);margin:0 0 24px;font-size:18px}
+.cta{font:inherit;font-weight:700;background:var(--acc);color:var(--on);border:0;border-radius:10px;padding:12px 26px;cursor:pointer;margin-top:22px}
+.lg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surf)}
+.lg button{font:inherit;font-size:13px;font-weight:700;color:var(--mute);background:none;border:0;padding:5px 14px;cursor:pointer}
+.lg button[aria-pressed="true"]{background:var(--acc);color:var(--on)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px}
+.tabs{display:flex;gap:6px;overflow-x:auto;flex:1}
+.tabs button{flex:0 0 auto;font:inherit;font-size:14px;font-weight:500;color:var(--mute);background:none;border:0;border-bottom:2px solid transparent;padding:6px 10px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--acc)}
+.tabs button.done::after{content:" ✓";color:var(--ok)}
+.prog{display:flex;gap:4px;margin:14px 0 0}
+.prog i{flex:1;height:3px;background:var(--line);border-radius:2px}
+.prog i.f{background:var(--acc)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+section{display:none;padding:36px 0 16px}
+section.on{display:block}
+h2{font-size:clamp(26px,6vw,36px);line-height:1.4;margin:0 0 6px}
+.q{color:var(--acc);margin:0 0 20px;font-weight:500}
+.def{font-size:19px;line-height:1.95;border-inline-start:3px solid var(--acc);padding-inline-start:18px;margin:0 0 26px;max-width:62ch}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:12px 0}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+.seg button,.opt{font:inherit;font-size:15px;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer;text-align:start}
+.seg button[aria-pressed="true"]{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc);font-weight:500}
+.sent{font-size:21px;font-weight:500;margin:0 0 14px}
+.blank{color:var(--acc);border-bottom:2px solid var(--acc);padding:0 6px}
+.row{display:grid;grid-template-columns:6.5em 1fr 2.8em;gap:12px;align-items:center;width:100%;font:inherit;color:var(--ink);background:none;border:1px solid transparent;border-radius:10px;padding:6px 8px;text-align:start}
+button.row{cursor:pointer}button.row:hover{border-color:var(--line)}
+button.row.sel{border-color:var(--acc);background:var(--bg)}
+.tr{height:14px;background:var(--line);border-radius:7px;overflow:hidden}
+.tr i{display:block;height:100%;width:0;background:var(--c);border-radius:7px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.pc{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px}
+.note{color:var(--mute);font-size:14px;margin:12px 0 0}
+.ins{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);max-width:62ch}
+.time{font-size:34px;font-weight:700;color:var(--acc);margin:0 0 4px;letter-spacing:-.01em}
+.dl b{display:block;color:var(--hot);font-size:14px;margin-top:12px}
+.dl p{margin:0;max-width:60ch}
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt.right{border-color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok)}
+.opt.wrong{opacity:.5}
+.reveal{display:none;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px;max-width:62ch}
+.reveal.on{display:block}
+.step h3{margin:0 0 6px;font-size:19px}
+.step b{color:var(--acc)}.step .m b{color:var(--hot)}
+ul.src{padding-inline-start:20px}
+a{color:var(--acc)}
+.pn{display:flex;justify-content:space-between;gap:12px;margin:28px 0 48px}
+.pn button{font:inherit;font-weight:700;border-radius:10px;padding:10px 22px;cursor:pointer;border:1px solid var(--line);background:var(--surf);color:var(--ink)}
+.pn button.p{background:var(--acc);color:var(--on);border-color:var(--acc)}
+.pn button:disabled{opacity:.35;cursor:default}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--mute);font-size:14px}
+@media (prefers-reduced-motion:reduce){.tr i{transition:none}}
+</style>
+</head>
+<body>
+<div class="strip"></div>
+<header class="hero"><div class="wrap">
+<div class="top"><span>GDGoC Taif University</span><span class="lg" role="group" aria-label="Language"><button data-l="ar">عربي</button><button data-l="en">EN</button></span></div>
+<p class="kick" data-k="kick"></p>
+<h1 data-k="title"></h1>
+<p class="sub" data-k="sub"></p>
+<div class="card" id="hero"></div>
+<button class="cta" id="start" data-k="cta"></button>
+</div></header>
+
+<nav id="nav"><div class="wrap">
+<div class="tabs" role="tablist"><button role="tab" data-i="0" data-k="t0"></button><button role="tab" data-i="1" data-k="t1"></button><button role="tab" data-i="2" data-k="t2"></button><button role="tab" data-i="3" data-k="t3"></button></div>
+<span class="lg" role="group" aria-label="Language"><button data-l="ar">عربي</button><button data-l="en">EN</button></span>
+</div></nav>
+
+<main class="wrap">
+<div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<section class="on">
+<h2 data-k="s1h"></h2><p class="q" data-k="s1q"></p>
+<p class="def" data-k="def"></p>
+<p data-k="s1p"></p>
+<div class="seg" id="gseg" role="group"></div>
+<div class="card" id="lab" aria-live="polite"></div>
+</section>
+
+<section>
+<h2 data-k="s2h"></h2><p class="q" data-k="s2q"></p>
+<div class="seg" id="dseg" role="group"></div>
+<div class="card dl" id="day" aria-live="polite"></div>
+</section>
+
+<section>
+<h2 data-k="s3h"></h2><p class="q" data-k="s3q"></p>
+<div class="card" data-quiz><p data-k="q1"></p>
+<div class="opts"><button class="opt" data-ok="0" data-k="q1a"></button><button class="opt" data-ok="0" data-k="q1b"></button><button class="opt" data-ok="1" data-k="q1c"></button></div>
+<div class="reveal" data-k="q1r"></div></div>
+<div class="card" data-quiz><p data-k="q2"></p>
+<div class="opts"><button class="opt" data-ok="1" data-k="q2a"></button><button class="opt" data-ok="0" data-k="q2b"></button></div>
+<div class="reveal" data-k="q2r"></div></div>
+</section>
+
+<section>
+<h2 data-k="s4h"></h2><p class="q" data-k="s4q"></p>
+<div class="card step"><h3 data-k="a0"></h3><div><b data-k="la"></b> <span data-k="a1"></span></div><div><b data-k="lb"></b> <span data-k="a2"></span></div><div class="m"><b data-k="lc"></b> <span data-k="a3"></span></div></div>
+<div class="card step"><h3 data-k="b0"></h3><div><b data-k="la"></b> <span data-k="b1"></span></div><div><b data-k="lb"></b> <span data-k="b2"></span></div><div class="m"><b data-k="lc"></b> <span data-k="b3"></span></div></div>
+<div class="card step"><h3 data-k="c0"></h3><div><b data-k="la"></b> <span data-k="c1"></span></div><div><b data-k="lb"></b> <span data-k="c2"></span></div><div class="m"><b data-k="lc"></b> <span data-k="c3"></span></div></div>
+<div class="card step"><h3 data-k="d0"></h3><div><b data-k="la"></b> <span data-k="d1"></span></div><div><b data-k="lb"></b> <span data-k="d2"></span></div><div class="m"><b data-k="lc"></b> <span data-k="d3"></span></div></div>
+<h3 data-k="srh"></h3>
+<ul class="src">
+<li>Google DeepMind, AlphaFold and traffic prediction: <a href="https://deepmind.google" target="_blank" rel="noopener">deepmind.google</a></li>
+<li>NobelPrize.org, Chemistry 2024: <a href="https://www.nobelprize.org" target="_blank" rel="noopener">nobelprize.org</a></li>
+<li>Stanford HAI, AI Index: <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener">hai.stanford.edu/ai-index</a></li>
+<li>SDAIA: <a href="https://sdaia.gov.sa" target="_blank" rel="noopener">sdaia.gov.sa</a></li>
+</ul>
+</section>
+<div class="pn"><button id="prev" data-k="prev"></button><button id="next" class="p" data-k="next"></button></div>
+</main>
+<footer><div class="wrap" data-k="foot"></div></footer>
+
+<script>
+(function(){
+var T={
+en:{kick:"AI Through My Eyes",title:"AI doesn’t know. It guesses brilliantly.",sub:"That is my view of AI, and I’ll prove it with three small experiments. Here is one guess, live:",cta:"Start the experiments",
+t0:"In my words",t1:"Around us",t2:"What surprised me",t3:"How AI helped",prev:"Back",next:"Next",
+s1h:"AI in my words",s1q:"What is AI, from my point of view?",
+def:"I see AI as a trained guessing machine. Nobody told it that Paris is the capital of France; it read enough text to guess the next word with surprising accuracy. It doesn’t understand the way we do, but it spots patterns and weighs probabilities far faster than we can.",
+s1p:"Try the guess lab: pick a sentence and see how a model spreads its probabilities. Tap any word to finish the sentence with it.",
+note:"The numbers are illustrative: my own estimates to explain the idea, not real model output.",
+ins:"Notice: when the answer is well known, the probability piles onto one word. When it is open, it spreads out. That is why a model can give two different answers to the same question.",
+G:[{p:"The capital of France is",o:[["Paris",96],["Lyon",2],["Marseille",1],["Rome",1]]},{p:"Summer weather in Taif is usually",o:[["mild",58],["pleasant",24],["hot",12],["rainy",6]]},{p:"The best first programming language is",o:[["Python",46],["JavaScript",31],["C++",13],["Java",10]]}],
+s2h:"AI around us",s2q:"My whole day is full of guesses. Pick a time of day.",lg:"What it guesses",lh:"How",lw:"When it’s wrong",
+D:[{tm:"8:00 AM",n:"Maps",g:"How long your trip will take.",h:"It gathers signals from thousands of phones and compares them with the traffic of previous days.",w:"A sudden accident it has never seen before."},
+{tm:"7:00 PM",n:"Recommendations",g:"What you will watch next.",h:"It learns from what you watch, skip and replay, and compares you with millions of people like you.",w:"It can trap you in the same topic, because it guesses what you like, not what is good for you."},
+{tm:"11:30 PM",n:"Fraud alerts",g:"Whether a card payment is really yours.",h:"It compares the payment with your usual habits: place, amount and time.",w:"It may block a genuine payment because you travelled or bought something unusual."}],
+s3h:"What surprised me",s3q:"One guess can change science. Another can fool you.",
+q1:"Roughly how many protein structures has AlphaFold predicted?",q1a:"A few thousand",q1b:"About a million",q1c:"Over 200 million",
+q1r:"A protein’s shape decides what it does, and finding one in the lab could take months or years. AlphaFold reached over 200 million predicted structures, and its developers received a share of the 2024 Nobel Prize in Chemistry. An educated guess can speed up science itself.",
+q2:"True or false? AI can answer with full confidence and still be wrong.",q2a:"True",q2b:"False",
+q2r:"True. It is called hallucination: language models guess likely words, not guaranteed facts. That is why I checked every claim on this page against its source.",
+s4h:"How AI helped me",s4q:"Tool used: Claude (Anthropic) for research, design and code. The idea and the decisions were mine, and whenever the tool guessed, I checked.",la:"I asked:",lb:"AI helped with:",lc:"I added:",
+a0:"1. Research",a1:"Explain AI and where it is used.",a2:"Summarising ideas and suggesting research questions.",a3:"Chose what touches my life and verified facts in the sources below.",
+b0:"2. The idea",b1:"An interactive experience, different from slides.",b2:"Offering several ideas and shaping “the guessing machine”.",b3:"Picked the idea that matches my opinion and tied all four sections to it.",
+c0:"3. Build",c1:"A bilingual web page that works on phones.",c2:"Writing all the code, with no programming experience needed.",c3:"Reviewed the wording and spelling and tested it on my phone.",
+d0:"4. Refinement",d1:"A more professional look and a more original idea.",d2:"Redesigning the page and building the interactive guess lab.",d3:"Looked at other work for inspiration without copying, and decided what stays.",
+srh:"Sources",foot:"AI Through My Eyes · AI Track · GDGoC Taif University"},
+ar:{kick:"الذكاء الاصطناعي كما أراه",title:"الذكاء الاصطناعي لا يعرف، بل يخمّن ببراعة.",sub:"هذه رؤيتي للذكاء الاصطناعي، وسأثبتها لك بثلاث تجارب صغيرة. وهذا تخمين واحد مباشر:",cta:"ابدأ التجارب",
+t0:"بكلماتي",t1:"من حولنا",t2:"ما فاجأني",t3:"كيف ساعدني",prev:"السابق",next:"التالي",
+s1h:"الذكاء الاصطناعي بكلماتي",s1q:"ما الذكاء الاصطناعي من وجهة نظري؟",
+def:"أراه آلة تخمين مدرَّبة. لم يخبرها أحد أن عاصمة فرنسا هي باريس؛ قرأت نصوصًا كثيرة حتى صار تخمينها للكلمة التالية دقيقًا بشكل مدهش. هي لا تفهم كما نفهم، لكنها تلتقط الأنماط وتحسب الاحتمالات أسرع منا بكثير.",
+s1p:"جرّب مختبر التخمين: اختر جملة، ثم شاهد كيف يوزّع النموذج احتمالاته. اضغط على أي كلمة لتكمل الجملة بها.",
+note:"الأرقام توضيحية: هي تقديرات مني لشرح الفكرة، وليست مخرجات نموذج حقيقي.",
+ins:"لاحظ: حين تكون الإجابة معروفة يتركز الاحتمال في كلمة واحدة، وحين تكون مفتوحة يتوزع. ولهذا قد يعطيك النموذج جوابين مختلفين للسؤال نفسه.",
+G:[{p:"عاصمة فرنسا هي",o:[["باريس",96],["ليون",2],["مرسيليا",1],["روما",1]]},{p:"الطقس في الطائف صيفًا غالبًا",o:[["معتدل",58],["لطيف",24],["حار",12],["ممطر",6]]},{p:"أفضل لغة برمجة للبداية هي",o:[["بايثون",46],["جافاسكريبت",31],["++C",13],["جافا",10]]}],
+s2h:"الذكاء الاصطناعي من حولنا",s2q:"يومي كله مليء بالتخمينات. اختر وقتًا من اليوم.",lg:"ماذا يخمّن",lh:"كيف",lw:"متى يخطئ",
+D:[{tm:"٨:٠٠ ص",n:"الخرائط",g:"كم ستستغرق رحلتك.",h:"يجمع إشارات من آلاف الهواتف ويقارنها بزحام الأيام السابقة.",w:"حادث مفاجئ لم يرَ مثله من قبل."},
+{tm:"٧:٠٠ م",n:"التوصيات",g:"ما الذي ستشاهده بعد ذلك.",h:"يتعلّم مما تشاهده وتتخطاه وتعيده، ويقارنك بملايين الأشخاص الذين يشبهونك.",w:"قد يحبسك في الموضوع نفسه، لأنه يخمّن ما تحب لا ما يفيدك."},
+{tm:"١١:٣٠ م",n:"تنبيهات الاحتيال",g:"هل هذه العملية الشرائية منك فعلًا.",h:"يقارنها بعاداتك المعتادة: المكان والمبلغ والوقت.",w:"قد يوقف عملية سليمة لأنك سافرت أو اشتريت شيئًا غير معتاد."}],
+s3h:"ما الذي أثار فضولي؟",s3q:"تخمين واحد قد يغيّر العلم، وتخمين آخر قد يخدعك.",
+q1:"كم بنية بروتين تقريبًا تنبأ بها نظام AlphaFold؟",q1a:"بضعة آلاف",q1b:"نحو مليون",q1c:"أكثر من 200 مليون",
+q1r:"شكل البروتين يحدد وظيفته، وكان تحديده في المختبر يستغرق شهورًا أو سنوات. وصل AlphaFold إلى أكثر من 200 مليون بنية متوقعة، ونال مطوّروه جزءًا من جائزة نوبل في الكيمياء لعام 2024. التخمين المدروس قد يسرّع العلم نفسه.",
+q2:"صح أم خطأ؟ قد يجيب الذكاء الاصطناعي بثقة كاملة وهو مخطئ.",q2a:"صح",q2b:"خطأ",
+q2r:"صح، وتسمى «الهلوسة»: النماذج اللغوية تخمّن الكلمات المحتملة لا الحقائق المضمونة. ولهذا راجعت كل معلومة في هذه الصفحة من مصدرها.",
+s4h:"كيف ساعدني الذكاء الاصطناعي؟",s4q:"الأداة المستخدمة: Claude من Anthropic للبحث والتصميم والبرمجة. أما الفكرة والقرارات فكانت لي، وكلما خمّنت الأداة تحققت أنا.",la:"طلبتُ:",lb:"ساعدني في:",lc:"أضفتُ أنا:",
+a0:"١. البحث",a1:"اشرح لي الذكاء الاصطناعي ومجالات استخدامه.",a2:"تلخيص الأفكار واقتراح أسئلة للبحث.",a3:"اخترت ما يمسّ حياتي وتحققت من الحقائق في المصادر أدناه.",
+b0:"٢. الفكرة",b1:"تجربة تفاعلية مختلفة عن الشرائح.",b2:"اقتراح عدة أفكار وصياغة فكرة «آلة التخمين».",b3:"اخترت الفكرة التي تعبّر عن رأيي وربطت بها الأقسام الأربعة.",
+c0:"٣. البناء",c1:"صفحة ويب بلغتين تعمل على الجوال.",c2:"كتابة الكود كاملًا دون الحاجة إلى خبرة برمجية.",c3:"راجعت الصياغة والإملاء وجرّبت الصفحة على جوالي.",
+d0:"٤. التحسين",d1:"شكل أكثر احترافية وفكرة أكثر تميزًا.",d2:"إعادة تصميم الصفحة وبناء مختبر التخمين التفاعلي.",d3:"اطلعت على أعمال أخرى للإلهام دون تقليد، وقررت ما يبقى.",
+srh:"المصادر",foot:"الذكاء الاصطناعي كما أراه · مسار الذكاء الاصطناعي · GDGoC Taif University"}};
+var C=['#4285f4','#ea4335','#fbbc04','#34a853'];
+var lang='ar',cur=0,gi=1,di=0,pick=-1,seen={0:1},tabs=[].slice.call(document.querySelectorAll('[role=tab]')),secs=[].slice.call(document.querySelectorAll('section')),pr=[].slice.call(document.querySelectorAll('.prog i'));
+try{var sv=localStorage.getItem('lang');if(sv==='en'||sv==='ar')lang=sv}catch(e){}
+function rows(g,live){return g.o.map(function(o,k){var tag=live?'button':'div';
+return '<'+tag+' class="row'+(live&&k===pick?' sel':'')+'" '+(live?'data-p="'+k+'"':'')+' style="--c:'+C[k]+'"><span>'+o[0]+'</span><span class="tr"><i data-w="'+o[1]+'"></i></span><span class="pc">'+o[1]+'%</span></'+tag+'>'}).join('')}
+function grow(el){requestAnimationFrame(function(){requestAnimationFrame(function(){el.querySelectorAll('i[data-w]').forEach(function(i){i.style.width=i.dataset.w+'%'})})})}
+function sent(g,live){return '<p class="sent">'+g.p+' <span class="blank">'+(live&&pick>=0?g.o[pick][0]:'…')+'</span></p>'}
+function render(){var d=document.documentElement,t=T[lang];d.lang=lang;d.dir=lang==='ar'?'rtl':'ltr';
+document.querySelectorAll('[data-k]').forEach(function(e){e.innerHTML=t[e.dataset.k]});
+document.querySelectorAll('.lg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===lang)});
+var h=document.getElementById('hero');h.innerHTML=sent(t.G[1],0)+rows(t.G[1],0);grow(h);
+document.getElementById('gseg').innerHTML=t.G.map(function(g,k){return '<button data-g="'+k+'" aria-pressed="'+(k===gi)+'">'+g.p+'</button>'}).join('');
+var L=document.getElementById('lab'),g=t.G[gi];L.innerHTML=sent(g,1)+rows(g,1)+'<p class="note">'+t.note+'</p>'+(pick>=0?'<p class="ins">'+t.ins+'</p>':'');grow(L);
+document.getElementById('dseg').innerHTML=t.D.map(function(x,k){return '<button data-d="'+k+'" aria-pressed="'+(k===di)+'">'+x.tm+' · '+x.n+'</button>'}).join('');
+var x=t.D[di];document.getElementById('day').innerHTML='<p class="time">'+x.tm+'</p><b>'+t.lg+'</b><p>'+x.g+'</p><b>'+t.lh+'</b><p>'+x.h+'</p><b>'+t.lw+'</b><p>'+x.w+'</p>';
+document.title=t.kick+' · '+T.en.title}
+document.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+if(b.dataset.g!==undefined){gi=+b.dataset.g;pick=-1;render()}
+else if(b.dataset.d!==undefined){di=+b.dataset.d;render()}
+else if(b.dataset.p!==undefined){pick=+b.dataset.p;render()}
+else if(b.dataset.l){lang=b.dataset.l;try{localStorage.setItem('lang',lang)}catch(x){}render()}
+else if(b.classList.contains('opt')){var q=b.closest('[data-quiz]');q.querySelectorAll('.opt').forEach(function(o){o.classList.add(o.dataset.ok==='1'?'right':'wrong');o.disabled=true});q.querySelector('.reveal').classList.add('on')}});
+function show(i,sc){cur=i;seen[i]=1;tabs.forEach(function(x,k){x.setAttribute('aria-selected',k===i);x.classList.toggle('done',!!seen[k]&&k!==i)});
+secs.forEach(function(s,k){s.classList.toggle('on',k===i)});pr.forEach(function(p,k){p.classList.toggle('f',k<=i)});
+document.getElementById('prev').disabled=i===0;document.getElementById('next').disabled=i===3;
+if(sc)window.scrollTo({top:document.getElementById('nav').offsetTop,behavior:'smooth'})}
+tabs.forEach(function(t){t.addEventListener('click',function(){show(+t.dataset.i,1)})});
+document.getElementById('prev').onclick=function(){show(cur-1,1)};
+document.getElementById('next').onclick=function(){show(cur+1,1)};
+document.getElementById('start').onclick=function(){window.scrollTo({top:document.getElementById('nav').offsetTop,behavior:'smooth'})};
+render();show(0,0);
+})();
+</script>
+</body>
+</html>
